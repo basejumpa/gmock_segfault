@@ -1,0 +1,29 @@
+# pipenv and pytest execution inspired by
+# https://github.com/okeeffed/hello-pytest-github-actions/
+
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build_and_test:
+    name: Build and test
+    strategy:
+      matrix:
+        include:
+          - os: [windows-latest, ubuntu-latest]
+            compiler: [clang, gcc]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: build
+        env:
+          CC: ${{ matrix.compiler }}
+        run: |
+          cc --version
+          cmake -Bbuild -S. -GNinja
+          cmake --build build
+
+      - name: test
+        run: |
+          ctest --test-dir build --output-on-failure
