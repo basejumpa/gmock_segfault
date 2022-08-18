@@ -5,6 +5,7 @@ using namespace testing;
 
 class Mockup {
  public:
+  virtual ~Mockup() = default;
   MOCK_METHOD((void), setSomeInt, (int));
 };
 
