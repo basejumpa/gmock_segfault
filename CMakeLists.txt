@@ -8,7 +8,7 @@ include(FetchContent)
 FetchContent_Declare(
   googletest
   GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG release-1.11.0
+  GIT_TAG release-1.12.1
 )
 
 if (WIN32)
@@ -26,31 +26,23 @@ find_package(Threads REQUIRED)
 enable_testing()
 
 
-add_executable(
-    my_test_a
-    my_test_a.cc
-)
-  
-target_link_libraries(
-my_test_a
-GTest::gtest_main
-GTest::gmock_main
-Threads::Threads
-)
+macro(create_test_executable NAME)
+  add_executable(
+      ${NAME}
+      ${NAME}.cc
+  )
+    
+  target_link_libraries(
+    ${NAME}
+  GTest::gtest_main
+  GTest::gmock_main
+  Threads::Threads
+  )
 
-gtest_discover_tests(my_test_a)
+  gtest_discover_tests(${NAME})
+endmacro(create_test_executable)
 
 
-add_executable(
-    my_test_b
-    my_test_b.cc
-)
-  
-target_link_libraries(
-my_test_b
-GTest::gtest_main
-GTest::gmock_main
-Threads::Threads
-)
-
-gtest_discover_tests(my_test_b)
+create_test_executable(my_test_a)
+create_test_executable(my_test_b)
+create_test_executable(my_test_c)
