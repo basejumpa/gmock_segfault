@@ -8,19 +8,14 @@ on: [push, pull_request]
 jobs:
   build_and_test:
     name: Build and test
-    strategy:
-      matrix:
-        include:
-          - os: [windows-latest, ubuntu-latest]
-            compiler: [clang, gcc]
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: build
         env:
-          CC: ${{ matrix.compiler }}
+          CC: clang
         run: |
-          cc --version
           cmake -Bbuild -S. -GNinja
           cmake --build build
 
