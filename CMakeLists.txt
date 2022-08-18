@@ -43,9 +43,8 @@ macro(create_test_executable NAME)
 endmacro(create_test_executable)
 
 
-create_test_executable(my_test_a)
-create_test_executable(my_test_b)
-create_test_executable(my_test_c)
-create_test_executable(my_test_d)
-create_test_executable(my_test_e)
-create_test_executable(my_test_f)
+create_test_executable(test_expectation_met__leaked)
+create_test_executable(test_expectation_met__not_leaked)
+create_test_executable(test_expectation_not_met__leaked)
+create_test_executable(test_expectation_not_met__not_leaked)
+

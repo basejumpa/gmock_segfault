@@ -8,8 +8,9 @@ class Mockup {
   MOCK_METHOD((void), setSomeInt, (int));
 };
 
-TEST(my_test_b, SomeTest) {
-    Mockup mockup; 
-    EXPECT_CALL(mockup, setSomeInt(0));
+Mockup mockup;
+
+TEST(test_expectation_not_met__leaked, SomeTest) {
+    EXPECT_CALL(mockup, setSomeInt(0)).Times(2);
     mockup.setSomeInt(0);
 }
