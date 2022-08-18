@@ -16,7 +16,7 @@ jobs:
         env:
           CC: clang
         run: |
-          cmake -Bbuild -S. -GNinja
+          cmake -Bbuild -S.
           cmake --build build
 
       - name: test
