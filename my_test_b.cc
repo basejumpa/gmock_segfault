@@ -9,9 +9,8 @@ class Mockup {
   MOCK_METHOD((void), setSomeInt, (int));
 };
 
-Mockup mockup;
-
 TEST(my_test_b, SomeTest) {
+    Mockup mockup; 
     EXPECT_CALL(mockup, setSomeInt(0));
     mockup.setSomeInt(0);
 }
