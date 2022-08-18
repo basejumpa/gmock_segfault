@@ -10,6 +10,6 @@ class Mockup {
 
 Mockup mockup;
 
-TEST(my_test_c, SomeTest) {
+TEST(my_test_f, SomeTest) {
     EXPECT_CALL(mockup, setSomeInt(0));
 }

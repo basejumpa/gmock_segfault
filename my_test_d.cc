@@ -10,6 +10,6 @@ class Mockup {
 
 Mockup mockup;
 
-TEST(my_test_a, SomeTest) {
+TEST(my_test_d, SomeTest) {
     EXPECT_EQ(1, 1);
 }
