@@ -1,3 +1,5 @@
+Material for issue https://github.com/google/googletest/issues/3982
+
 Only on windows a leaked mock object causes a segmentation fault in the test executable.
 
 Expected behavior:
